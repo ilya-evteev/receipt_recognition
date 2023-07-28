@@ -1,0 +1,8 @@
+flask
+cv2
+skimage
+scipy
+numpy
+openai
+pytesseract
+matplotlib
