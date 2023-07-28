@@ -10,11 +10,12 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 def image_to_items():
     file = request.data
-
+    print(file)
     jpg_as_np = np.frombuffer(file, dtype=np.uint8)
+    print(jpg_as_np)
     image = cv2.imdecode(jpg_as_np, cv2.IMREAD_COLOR)
-
     print(image)
+
 
     image = image_normalize(image)
     angle, image = correct_skew(image)
