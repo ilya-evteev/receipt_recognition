@@ -1,6 +1,6 @@
 flask
-cv2
-skimage
+opencv-python
+scikit-image
 scipy
 numpy
 openai

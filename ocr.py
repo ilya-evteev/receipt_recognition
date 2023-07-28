@@ -2,7 +2,7 @@ import pytesseract
 import cv2
 from pytesseract import Output
 
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+# pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 def get_text_boxes(image):
     d = pytesseract.image_to_data(image, lang= 'rus+eng', output_type=Output.DICT)
