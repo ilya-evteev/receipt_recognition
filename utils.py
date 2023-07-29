@@ -22,9 +22,9 @@ def content_str_to_dict(content_str):
     total_price = 0
     for price in price_list:
         try:
-            price_int = int(price)
+            price_int = int(float(price))
         except:
-            pass
+            price_int = 0
 
         total_price = total_price + price_int
 
