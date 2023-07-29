@@ -10,12 +10,8 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 def image_to_items():
     file = request.data
-    print(file)
     jpg_as_np = np.frombuffer(file, dtype=np.uint8)
-    print(jpg_as_np)
     image = cv2.imdecode(jpg_as_np, cv2.IMREAD_COLOR)
-    print(image)
-
 
     image = image_normalize(image)
     angle, image = correct_skew(image)
@@ -23,6 +19,11 @@ def image_to_items():
     image = bw_scanner(image)
 
     extracted_text = image_to_string(image, lang='rus+eng')
+
+    if len(extracted_text) < 100:
+        content = 'Чек не найден на фото. Попробуйте снова.'
+        return content, 400
+
     prompt = bild_prompt_for_gpt(extracted_text)
     posison = gpt_process(prompt)
 
